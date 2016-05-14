@@ -45,6 +45,16 @@ class ViewController: UICollectionViewController {
             let targetViewController = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! SoundbiteDetailsViewController
             let cellId = getCellId(sender as! UIButton)
             targetViewController.soundbite = soundbites[cellId]
+            targetViewController.callback = { (soundbite) in
+                if soundbite.toBeDeleted {
+                    print("Soundbite \(cellId) should be deleted")
+                    self.soundbites.removeAtIndex(cellId)
+                } else {
+                    print("Soundbite \(cellId) will be updated")
+                    self.soundbites[cellId] = soundbite
+                }
+                self.collectionView?.reloadData()
+            }
         }
     }
     
@@ -63,7 +73,7 @@ class ViewController: UICollectionViewController {
         
         let soundbite = soundbites[indexPath.row]
         cell.backgroundColor = soundbite.backgroundColour
-        cell.tintColor = soundbite.foregroundColour
+        cell.tintColor = soundbite.darkForeground ? UIColor.blackColor() : UIColor.whiteColor()
         cell.setName(soundbite.name)
         
         return cell
@@ -109,20 +119,24 @@ struct Soundbite {
     
     internal var name : String
     
-    internal var backgroundColour, foregroundColour : UIColor
+    internal var backgroundColour : UIColor
+    
+    internal var darkForeground : Bool
+    
+    internal var toBeDeleted : Bool = false
     
     init() {
         self.file = nil
         self.name = "Soundbite"
         backgroundColour = UIColor.whiteColor()
-        foregroundColour = UIColor.blackColor()
+        darkForeground = true
     }
     
-    init(withFile file: NSURL, andName name: String, andBackground bg: UIColor, andForeground fg: UIColor) {
+    init(withFile file: NSURL, andName name: String, andBackground bg: UIColor, useBlackForeground useDarkFg: Bool) {
         self.file = file
         self.name = name
         self.backgroundColour = bg
-        self.foregroundColour = fg
+        self.darkForeground = useDarkFg
     }
     
 }
