@@ -117,9 +117,9 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Soundbite" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yxd-VS-NT9">
                                                     <rect key="frame" x="73" y="1" width="519" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
-                                                        <action selector="endEditing:" destination="0O4-Dw-nDK" eventType="editingDidEnd" id="9mu-CM-DZz"/>
+                                                        <outlet property="delegate" destination="0O4-Dw-nDK" id="NzB-iY-5vo"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>

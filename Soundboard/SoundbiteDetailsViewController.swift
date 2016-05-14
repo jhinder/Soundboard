@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SoundbiteDetailsViewController: UITableViewController {
+class SoundbiteDetailsViewController: UITableViewController, UITextFieldDelegate {
 
     internal var soundbite : Soundbite?
     
@@ -68,15 +68,24 @@ class SoundbiteDetailsViewController: UITableViewController {
     }
     
     @IBAction func dismiss(sender: UIBarButtonItem) {
+        soundbite?.name = soundbiteName.text!
         executeCallback()
     }
 
-    @IBAction func endEditing(sender: UITextField) {
-        if (sender.text! == "") {
-            sender.text = "Soundbite"
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if textField.text == "" {
+            textField.text = "Soundbite"
         }
-        navigationItem.title = sender.text!
-        soundbite?.name = sender.text!
+        navigationItem.title = textField.text!
     }
     
     @IBAction func deleteSoundbite(sender: UIButton) {
