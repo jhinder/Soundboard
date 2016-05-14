@@ -11,7 +11,19 @@ import AVFoundation
 
 struct Soundbite {
     
-    internal var file : NSURL?
+    internal var file : NSURL? {
+        didSet {
+            do {
+                if let _ = file {
+                    player = try AVAudioPlayer(contentsOfURL: file!)
+                }
+            } catch let error as NSError {
+                print("Could not create a player:", error)
+            }
+        }
+    }
+    
+    private var player : AVAudioPlayer?
     
     internal var name : String
     
@@ -33,6 +45,11 @@ struct Soundbite {
         self.name = name
         self.backgroundColour = bg
         self.darkForeground = useDarkFg
+    }
+    
+    internal func play() {
+        player?.prepareToPlay()
+        player?.play()
     }
     
 }

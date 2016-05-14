@@ -34,8 +34,10 @@ class ViewController: UICollectionViewController {
     }
     
     @IBAction func playbackCell(sender: UIButton) {
-        let indexPath = getCellId(sender)
-        print("Playing cell:", indexPath)
+        let index = getCellId(sender)
+        let soundbite = soundbites[index]
+        print("Playing soundbite \(index)/\(soundbite.name)")
+        soundbite.play()
     }
     
     // MARK: - Navigation
