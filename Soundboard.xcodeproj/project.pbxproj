@@ -18,6 +18,8 @@
 		3DD745321CE74EAA001E7E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DD745311CE74EAA001E7E9A /* Assets.xcassets */; };
 		3DD745351CE74EAA001E7E9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DD745331CE74EAA001E7E9A /* LaunchScreen.storyboard */; };
 		3DD7453E1CE7505B001E7E9A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DD7453C1CE7505B001E7E9A /* Settings.storyboard */; };
+		3DE609B21CE77B1C008955D0 /* SoundbiteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B11CE77B1C008955D0 /* SoundbiteDetailsViewController.swift */; };
+		3DE609B41CE77E3C008955D0 /* SoundbiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B31CE77E3C008955D0 /* SoundbiteCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		3DD745341CE74EAA001E7E9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DD745361CE74EAA001E7E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DD7453D1CE7505B001E7E9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		3DE609B11CE77B1C008955D0 /* SoundbiteDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundbiteDetailsViewController.swift; sourceTree = "<group>"; };
+		3DE609B31CE77E3C008955D0 /* SoundbiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundbiteCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				3DD7452C1CE74EAA001E7E9A /* ViewController.swift */,
+				3DE609B31CE77E3C008955D0 /* SoundbiteCell.swift */,
+				3DE609B11CE77B1C008955D0 /* SoundbiteDetailsViewController.swift */,
 			);
 			name = Soundboard;
 			sourceTree = "<group>";
@@ -195,10 +201,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D55C9521CE7590D00DFD329 /* ErrorMessageExtension.swift in Sources */,
+				3DE609B21CE77B1C008955D0 /* SoundbiteDetailsViewController.swift in Sources */,
 				3DD7452D1CE74EAA001E7E9A /* ViewController.swift in Sources */,
 				3D55C9491CE753BE00DFD329 /* FileManagementViewController.swift in Sources */,
 				3D55C95A1CE7618F00DFD329 /* FileMetadataViewController.swift in Sources */,
 				3DD7452B1CE74EAA001E7E9A /* AppDelegate.swift in Sources */,
+				3DE609B41CE77E3C008955D0 /* SoundbiteCell.swift in Sources */,
 				3D55C94D1CE754AD00DFD329 /* SettingsViewController.swift in Sources */,
 				3D55C94B1CE7548300DFD329 /* AppSettingsViewController.swift in Sources */,
 			);

@@ -8,18 +8,122 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UICollectionViewController {
 
+    var soundbites : [Soundbite] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        collectionView?.backgroundColor = UIColor.lightGrayColor()
+        // Don't register cells here, we've already set the cell identifier in the storyboard.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func addCell(sender: UIBarButtonItem) {
+        soundbites.append(Soundbite())
+        collectionView?.reloadData()
+    }
+    
+    private func getCellId(button: UIButton) -> Int {
+        let convertedPoint = collectionView?.convertPoint(button.center, fromView: button.superview)
+        let indexPath = collectionView?.indexPathForItemAtPoint(convertedPoint!)
+        return (indexPath?.row)!
+    }
+    
+    @IBAction func playbackCell(sender: UIButton) {
+        let indexPath = getCellId(sender)
+        print("Playing cell:", indexPath)
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "soundbiteDetailSegue" {
+            let targetViewController = (segue.destinationViewController as! UINavigationController).viewControllers[0] as! SoundbiteDetailsViewController
+            let cellId = getCellId(sender as! UIButton)
+            targetViewController.soundbite = soundbites[cellId]
+        }
+    }
+    
+    // MARK: UICollectionViewDataSource
+    
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return soundbites.count
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("playCell", forIndexPath: indexPath) as! SoundbiteCell
+        
+        let soundbite = soundbites[indexPath.row]
+        cell.backgroundColor = soundbite.backgroundColour
+        cell.tintColor = soundbite.foregroundColour
+        cell.setName(soundbite.name)
+        
+        return cell
+    }
+    
+    // MARK: UICollectionViewDelegate
+    
+    /*
+     // Uncomment this method to specify if the specified item should be highlighted during tracking
+     override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment this method to specify if the specified item should be selected
+     override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+     return false
+     }
+     
+     override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+     return false
+     }
+     
+     override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
+     
+     }
+     */
 
 
+}
+
+struct Soundbite {
+    
+    internal var file : NSURL?
+    
+    internal var name : String
+    
+    internal var backgroundColour, foregroundColour : UIColor
+    
+    init() {
+        self.file = nil
+        self.name = "Soundbite"
+        backgroundColour = UIColor.whiteColor()
+        foregroundColour = UIColor.blackColor()
+    }
+    
+    init(withFile file: NSURL, andName name: String, andBackground bg: UIColor, andForeground fg: UIColor) {
+        self.file = file
+        self.name = name
+        self.backgroundColour = bg
+        self.foregroundColour = fg
+    }
+    
 }
 
