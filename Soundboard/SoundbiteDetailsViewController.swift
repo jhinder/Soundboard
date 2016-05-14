@@ -24,17 +24,31 @@ class SoundbiteDetailsViewController: UITableViewController {
         if let soundbite = soundbite {
             navigationItem.title = soundbite.name
             soundbiteName.text = soundbite.name
-            if let url = soundbite.file {
-                soundFileCell.detailTextLabel!.text = url.lastPathComponent
-            } else {
-                soundFileCell.detailTextLabel!.text = "(none selected)"
-            }
+            setSoundFileName()
             foregroundSelector.selectedSegmentIndex = soundbite.darkForeground ? 0 : 1
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "fileSelectionSegue" {
+            let targetController = segue.destinationViewController as! FileSelectionViewController
+            targetController.callback = { (url) in
+                self.soundbite?.file = url
+                self.setSoundFileName()
+            }
+        }
+    }
+    
+    private func setSoundFileName() {
+        if let url = soundbite?.file {
+            soundFileCell.detailTextLabel!.text = url.lastPathComponent
+        } else {
+            soundFileCell.detailTextLabel!.text = "(none selected)"
+        }
     }
     
     @IBAction func dismiss(sender: UIBarButtonItem) {
