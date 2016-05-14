@@ -18,6 +18,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        // We have received a file -> move from Documents/Inbox to Documents
+        // Note that you can't send audio files from Safari to other apps.
+        let documentFolder =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        do {
+            let inbox = documentFolder.URLByAppendingPathComponent("Inbox", isDirectory: true)
+            let allFiles = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(inbox, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
+            for file in allFiles {
+                let target = documentFolder.URLByAppendingPathComponent(file.lastPathComponent!)
+                print("Moving", file, "to", target)
+                try NSFileManager.defaultManager().moveItemAtURL(file, toURL: target)
+            }
+        } catch let error as NSError {
+            print("Error while moving inbox:", error)
+            return false
+        }
+        
+        return true
+    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
