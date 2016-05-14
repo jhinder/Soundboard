@@ -20,6 +20,7 @@
 		3DD7453E1CE7505B001E7E9A /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DD7453C1CE7505B001E7E9A /* Settings.storyboard */; };
 		3DE609B21CE77B1C008955D0 /* SoundbiteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B11CE77B1C008955D0 /* SoundbiteDetailsViewController.swift */; };
 		3DE609B41CE77E3C008955D0 /* SoundbiteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B31CE77E3C008955D0 /* SoundbiteCell.swift */; };
+		3DE609B61CE78804008955D0 /* FileListBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B51CE78804008955D0 /* FileListBaseTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		3DD7453D1CE7505B001E7E9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		3DE609B11CE77B1C008955D0 /* SoundbiteDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundbiteDetailsViewController.swift; sourceTree = "<group>"; };
 		3DE609B31CE77E3C008955D0 /* SoundbiteCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundbiteCell.swift; sourceTree = "<group>"; };
+		3DE609B51CE78804008955D0 /* FileListBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListBaseTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			children = (
 				3D55C9471CE7539F00DFD329 /* Soundboard */,
 				3D55C9461CE7539700DFD329 /* Settings */,
+				3DE609B51CE78804008955D0 /* FileListBaseTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				3DE609B21CE77B1C008955D0 /* SoundbiteDetailsViewController.swift in Sources */,
 				3DD7452D1CE74EAA001E7E9A /* ViewController.swift in Sources */,
 				3D55C9491CE753BE00DFD329 /* FileManagementViewController.swift in Sources */,
+				3DE609B61CE78804008955D0 /* FileListBaseTableViewController.swift in Sources */,
 				3D55C95A1CE7618F00DFD329 /* FileMetadataViewController.swift in Sources */,
 				3DD7452B1CE74EAA001E7E9A /* AppDelegate.swift in Sources */,
 				3DE609B41CE77E3C008955D0 /* SoundbiteCell.swift in Sources */,
