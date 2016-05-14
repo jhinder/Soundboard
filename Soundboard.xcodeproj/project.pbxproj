@@ -11,6 +11,7 @@
 		3D55C94B1CE7548300DFD329 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55C94A1CE7548300DFD329 /* AppSettingsViewController.swift */; };
 		3D55C94D1CE754AD00DFD329 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55C94C1CE754AD00DFD329 /* SettingsViewController.swift */; };
 		3D55C9521CE7590D00DFD329 /* ErrorMessageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55C9511CE7590D00DFD329 /* ErrorMessageExtension.swift */; };
+		3D55C95A1CE7618F00DFD329 /* FileMetadataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55C9591CE7618F00DFD329 /* FileMetadataViewController.swift */; };
 		3DD7452B1CE74EAA001E7E9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7452A1CE74EAA001E7E9A /* AppDelegate.swift */; };
 		3DD7452D1CE74EAA001E7E9A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DD7452C1CE74EAA001E7E9A /* ViewController.swift */; };
 		3DD745301CE74EAA001E7E9A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DD7452E1CE74EAA001E7E9A /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		3D55C94A1CE7548300DFD329 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
 		3D55C94C1CE754AD00DFD329 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3D55C9511CE7590D00DFD329 /* ErrorMessageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorMessageExtension.swift; sourceTree = "<group>"; };
+		3D55C9591CE7618F00DFD329 /* FileMetadataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileMetadataViewController.swift; sourceTree = "<group>"; };
 		3DD745271CE74EAA001E7E9A /* Soundboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Soundboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD7452A1CE74EAA001E7E9A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3DD7452C1CE74EAA001E7E9A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +53,7 @@
 				3D55C94C1CE754AD00DFD329 /* SettingsViewController.swift */,
 				3D55C94A1CE7548300DFD329 /* AppSettingsViewController.swift */,
 				3D55C9481CE753BE00DFD329 /* FileManagementViewController.swift */,
+				3D55C9591CE7618F00DFD329 /* FileMetadataViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				3D55C9521CE7590D00DFD329 /* ErrorMessageExtension.swift in Sources */,
 				3DD7452D1CE74EAA001E7E9A /* ViewController.swift in Sources */,
 				3D55C9491CE753BE00DFD329 /* FileManagementViewController.swift in Sources */,
+				3D55C95A1CE7618F00DFD329 /* FileMetadataViewController.swift in Sources */,
 				3DD7452B1CE74EAA001E7E9A /* AppDelegate.swift in Sources */,
 				3D55C94D1CE754AD00DFD329 /* SettingsViewController.swift in Sources */,
 				3D55C94B1CE7548300DFD329 /* AppSettingsViewController.swift in Sources */,

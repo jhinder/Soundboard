@@ -7,13 +7,19 @@
 //
 
 import UIKit
+import AVFoundation
 
 class FileManagementViewController: UITableViewController {
 
     var theFiles : [NSURL]?
     let permittedExtensions : [String] = ["mp3", "m4a", "mp4", "wav"]
     
+    let durationFormatter = NSDateFormatter()
+    
     override func viewDidLoad() {
+        durationFormatter.dateFormat = "mm:ss"
+        durationFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+        
         super.viewDidLoad()
         loadFiles()
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -63,7 +69,10 @@ class FileManagementViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("soundfileCell", forIndexPath: indexPath)
 
         let file = theFiles![indexPath.row]
+        let durationDatetime = NSDate(timeIntervalSince1970: CMTimeGetSeconds(AVAsset(URL: file).duration))
+        
         cell.textLabel!.text = file.lastPathComponent
+        cell.detailTextLabel!.text = durationFormatter.stringFromDate(durationDatetime)
 
         return cell
     }
@@ -82,6 +91,13 @@ class FileManagementViewController: UITableViewController {
                 print("Could not delete file:", error)
                 showError("The file \"\(url.lastPathComponent)\" could not be removed.", title: "Error")
             }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "metadataSegue" {
+            let targetViewController = segue.destinationViewController as! FileMetadataViewController
+            targetViewController.fileUrl = theFiles![(tableView.indexPathForSelectedRow?.row)!]
         }
     }
 
