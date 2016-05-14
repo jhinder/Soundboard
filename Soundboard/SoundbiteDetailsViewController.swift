@@ -15,6 +15,7 @@ class SoundbiteDetailsViewController: UITableViewController {
     internal var callback : ((Soundbite) -> Void)?
     
     // UI components
+    @IBOutlet weak var bgColourPreview: UIView!
     @IBOutlet weak var soundFileCell: UITableViewCell!
     @IBOutlet weak var soundbiteName: UITextField!
     @IBOutlet weak var foregroundSelector: UISegmentedControl!
@@ -24,9 +25,15 @@ class SoundbiteDetailsViewController: UITableViewController {
         if let soundbite = soundbite {
             navigationItem.title = soundbite.name
             soundbiteName.text = soundbite.name
-            setSoundFileName()
             foregroundSelector.selectedSegmentIndex = soundbite.darkForeground ? 0 : 1
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        // Anything that might change in a child controller gets updated here
+        setSoundFileName()
+        setPreviewBackground()
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,7 +45,12 @@ class SoundbiteDetailsViewController: UITableViewController {
             let targetController = segue.destinationViewController as! FileSelectionViewController
             targetController.callback = { (url) in
                 self.soundbite?.file = url
-                self.setSoundFileName()
+            }
+        } else if segue.identifier == "colourSegue" {
+            let targetController = segue.destinationViewController as! ColourMixerViewController
+            targetController.initialColour = self.soundbite?.backgroundColour
+            targetController.callback = { (colour) in
+                self.soundbite?.backgroundColour = colour
             }
         }
     }
@@ -49,6 +61,10 @@ class SoundbiteDetailsViewController: UITableViewController {
         } else {
             soundFileCell.detailTextLabel!.text = "(none selected)"
         }
+    }
+    
+    private func setPreviewBackground() {
+        bgColourPreview.backgroundColor = soundbite?.backgroundColour
     }
     
     @IBAction func dismiss(sender: UIBarButtonItem) {

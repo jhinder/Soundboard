@@ -23,6 +23,7 @@
 		3DE609B61CE78804008955D0 /* FileListBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B51CE78804008955D0 /* FileListBaseTableViewController.swift */; };
 		3DE609B81CE78B9C008955D0 /* FileSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B71CE78B9C008955D0 /* FileSelectionViewController.swift */; };
 		3DE609BA1CE78FCF008955D0 /* Soundbite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B91CE78FCF008955D0 /* Soundbite.swift */; };
+		3DE609BC1CE79BA7008955D0 /* ColourMixerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609BB1CE79BA7008955D0 /* ColourMixerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		3DE609B51CE78804008955D0 /* FileListBaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileListBaseTableViewController.swift; sourceTree = "<group>"; };
 		3DE609B71CE78B9C008955D0 /* FileSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSelectionViewController.swift; sourceTree = "<group>"; };
 		3DE609B91CE78FCF008955D0 /* Soundbite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soundbite.swift; sourceTree = "<group>"; };
+		3DE609BB1CE79BA7008955D0 /* ColourMixerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourMixerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				3DE609B31CE77E3C008955D0 /* SoundbiteCell.swift */,
 				3DE609B11CE77B1C008955D0 /* SoundbiteDetailsViewController.swift */,
 				3DE609B71CE78B9C008955D0 /* FileSelectionViewController.swift */,
+				3DE609BB1CE79BA7008955D0 /* ColourMixerViewController.swift */,
 			);
 			name = Soundboard;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				3DE609B21CE77B1C008955D0 /* SoundbiteDetailsViewController.swift in Sources */,
 				3DD7452D1CE74EAA001E7E9A /* ViewController.swift in Sources */,
 				3DE609BA1CE78FCF008955D0 /* Soundbite.swift in Sources */,
+				3DE609BC1CE79BA7008955D0 /* ColourMixerViewController.swift in Sources */,
 				3D55C9491CE753BE00DFD329 /* FileManagementViewController.swift in Sources */,
 				3DE609B61CE78804008955D0 /* FileListBaseTableViewController.swift in Sources */,
 				3D55C95A1CE7618F00DFD329 /* FileMetadataViewController.swift in Sources */,
