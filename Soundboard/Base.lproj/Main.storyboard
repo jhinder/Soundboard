@@ -14,38 +14,40 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Fj9-JP-2Og">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ou7-RC-Gta">
-                            <size key="itemSize" width="125" height="126"/>
+                            <size key="itemSize" width="144" height="144"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="5" minY="10" maxX="5" maxY="10"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="playCell" id="QuV-KX-Acl" customClass="SoundbiteCell" customModule="Soundboard" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="125" height="126"/>
+                                <rect key="frame" x="5" y="74" width="144" height="144"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="126"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3d-53-RM3">
-                                            <rect key="frame" x="28" y="88" width="68" height="30"/>
+                                            <rect key="frame" x="42" y="108" width="60" height="28"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <state key="normal" title="Configure"/>
                                             <connections>
                                                 <segue destination="b2A-KQ-wVX" kind="presentation" identifier="soundbiteDetailSegue" modalPresentationStyle="formSheet" id="KL0-cR-O9J"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmx-rN-lSv">
-                                            <rect key="frame" x="44" y="36" width="36" height="55"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                            <rect key="frame" x="52" y="42" width="40" height="60"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                             <state key="normal" title="▶︎"/>
                                             <connections>
                                                 <action selector="playbackCell:" destination="wjy-P4-4cn" eventType="touchUpInside" id="rW5-h0-Ben"/>
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af9-Qr-ZYa">
-                                            <rect key="frame" x="44" y="12" width="38" height="17"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <rect key="frame" x="51" y="15" width="43" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
