@@ -13,7 +13,7 @@ extension UIViewController {
     public func showError(message: String!, title: String!) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        self.showViewController(alert, sender: nil)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
 }
