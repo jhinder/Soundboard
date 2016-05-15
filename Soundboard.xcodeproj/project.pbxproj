@@ -24,6 +24,8 @@
 		3DE609B81CE78B9C008955D0 /* FileSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B71CE78B9C008955D0 /* FileSelectionViewController.swift */; };
 		3DE609BA1CE78FCF008955D0 /* Soundbite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609B91CE78FCF008955D0 /* Soundbite.swift */; };
 		3DE609BC1CE79BA7008955D0 /* ColourMixerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE609BB1CE79BA7008955D0 /* ColourMixerViewController.swift */; };
+		3DF7199F1CE8B34E00104FF3 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF7199E1CE8B34E00104FF3 /* AboutViewController.swift */; };
+		3DF719A11CE8B49400104FF3 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = 3DF719A01CE8B49400104FF3 /* about.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		3DE609B71CE78B9C008955D0 /* FileSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSelectionViewController.swift; sourceTree = "<group>"; };
 		3DE609B91CE78FCF008955D0 /* Soundbite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Soundbite.swift; sourceTree = "<group>"; };
 		3DE609BB1CE79BA7008955D0 /* ColourMixerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColourMixerViewController.swift; sourceTree = "<group>"; };
+		3DF7199E1CE8B34E00104FF3 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		3DF719A01CE8B49400104FF3 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 				3D55C94A1CE7548300DFD329 /* AppSettingsViewController.swift */,
 				3D55C9481CE753BE00DFD329 /* FileManagementViewController.swift */,
 				3D55C9591CE7618F00DFD329 /* FileMetadataViewController.swift */,
+				3DF7199E1CE8B34E00104FF3 /* AboutViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			children = (
 				3DD745311CE74EAA001E7E9A /* Assets.xcassets */,
 				3DD745361CE74EAA001E7E9A /* Info.plist */,
+				3DF719A01CE8B49400104FF3 /* about.html */,
 			);
 			name = Ressources;
 			sourceTree = "<group>";
@@ -201,6 +207,7 @@
 				3DD745351CE74EAA001E7E9A /* LaunchScreen.storyboard in Resources */,
 				3DD745321CE74EAA001E7E9A /* Assets.xcassets in Resources */,
 				3DD745301CE74EAA001E7E9A /* Main.storyboard in Resources */,
+				3DF719A11CE8B49400104FF3 /* about.html in Resources */,
 				3DD7453E1CE7505B001E7E9A /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +229,7 @@
 				3D55C95A1CE7618F00DFD329 /* FileMetadataViewController.swift in Sources */,
 				3DE609B81CE78B9C008955D0 /* FileSelectionViewController.swift in Sources */,
 				3DD7452B1CE74EAA001E7E9A /* AppDelegate.swift in Sources */,
+				3DF7199F1CE8B34E00104FF3 /* AboutViewController.swift in Sources */,
 				3DE609B41CE77E3C008955D0 /* SoundbiteCell.swift in Sources */,
 				3D55C94D1CE754AD00DFD329 /* SettingsViewController.swift in Sources */,
 				3D55C94B1CE7548300DFD329 /* AppSettingsViewController.swift in Sources */,

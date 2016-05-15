@@ -131,7 +131,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark soundboard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVh-js-OsC">
                                                     <rect key="frame" x="18" y="11" width="133" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JAZ-Mg-AAB">
@@ -256,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="1865" y="644"/>
         </scene>
-        <!--View Controller-->
+        <!--About-->
         <scene sceneID="P2O-Zw-CB4">
             <objects>
-                <viewController id="uFJ-i8-hbO" sceneMemberID="viewController">
+                <viewController title="About" id="uFJ-i8-hbO" customClass="AboutViewController" customModule="Soundboard" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="goS-wn-AEe"/>
                         <viewControllerLayoutGuide type="bottom" id="fAZ-g9-GMK"/>
@@ -267,8 +267,24 @@
                     <view key="view" contentMode="scaleToFill" id="gDq-JY-tBm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" mediaPlaybackRequiresUserAction="NO" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XLj-de-mI6">
+                                <rect key="frame" x="10" y="74" width="580" height="516"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fAZ-g9-GMK" firstAttribute="top" secondItem="XLj-de-mI6" secondAttribute="bottom" constant="10" id="BUT-sq-WA2"/>
+                            <constraint firstItem="XLj-de-mI6" firstAttribute="leading" secondItem="gDq-JY-tBm" secondAttribute="leading" constant="10" id="Moy-mA-KsZ"/>
+                            <constraint firstItem="XLj-de-mI6" firstAttribute="top" secondItem="goS-wn-AEe" secondAttribute="bottom" constant="10" id="R3T-Yg-OdQ"/>
+                            <constraint firstAttribute="trailing" secondItem="XLj-de-mI6" secondAttribute="trailing" constant="10" id="vaC-5c-jdE"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="XLj-de-mI6" id="h0D-Fh-kpD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9f-ba-agD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
