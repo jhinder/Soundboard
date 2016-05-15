@@ -55,6 +55,17 @@ class SoundbiteDetailsViewController: UITableViewController, UITextFieldDelegate
         }
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            soundbiteName.becomeFirstResponder()
+        case 4:
+            deleteSoundbite(UIButton())
+        default: break
+        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     private func setSoundFileName() {
         if let url = soundbite?.file {
             soundFileCell.detailTextLabel!.text = url.lastPathComponent
