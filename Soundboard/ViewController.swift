@@ -9,22 +9,18 @@
 import UIKit
 
 internal let ThemeChangeNotification = "ThemeChange"
-internal let ThemeSettingsKey = "darkTheme"
 
 class ViewController: UICollectionViewController {
 
     var soundbites : [Soundbite] = []
-    let defaults = NSUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Don't register cells here, we've already set the cell identifier in the storyboard.
         
-        setTheme(defaults.boolForKey(ThemeSettingsKey)) // not set -> false -> white theme
+        setTheme()
         NSNotificationCenter.defaultCenter().addObserverForName(ThemeChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
-            print("Changing theme")
-            let notif = notification.object as! ThemeNotification
-            self.setTheme(notif.darkTheme)
+            self.setTheme()
         }
     }
 
@@ -32,11 +28,11 @@ class ViewController: UICollectionViewController {
         super.didReceiveMemoryWarning()
     }
     
-    private func setTheme(dark: Bool) {
+    private func setTheme() {
+        let dark = AppSettings.instance().darkTheme
         self.navigationController?.navigationBar.tintColor = (dark ? UIColor.whiteColor() : nil)
         self.navigationController?.navigationBar.barStyle = (dark ? .Black : .Default)
         self.collectionView?.backgroundColor = (dark ? UIColor.darkGrayColor() : UIColor.whiteColor())
-        defaults.setBool(dark, forKey: ThemeSettingsKey)
     }
     
     @IBAction func addCell(sender: UIBarButtonItem) {

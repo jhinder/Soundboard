@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D38FD541CE9D476001BA18E /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D38FD531CE9D476001BA18E /* AppSettings.swift */; };
 		3D55C9491CE753BE00DFD329 /* FileManagementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55C9481CE753BE00DFD329 /* FileManagementViewController.swift */; };
 		3D55C94B1CE7548300DFD329 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55C94A1CE7548300DFD329 /* AppSettingsViewController.swift */; };
 		3D55C94D1CE754AD00DFD329 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D55C94C1CE754AD00DFD329 /* SettingsViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D38FD531CE9D476001BA18E /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		3D55C9481CE753BE00DFD329 /* FileManagementViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagementViewController.swift; sourceTree = "<group>"; };
 		3D55C94A1CE7548300DFD329 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingsViewController.swift; sourceTree = "<group>"; };
 		3D55C94C1CE754AD00DFD329 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				3DD745401CE752A6001E7E9A /* Storyboards/Views */,
 				3DD745411CE752C7001E7E9A /* Ressources */,
 				3DD7452A1CE74EAA001E7E9A /* AppDelegate.swift */,
+				3D38FD531CE9D476001BA18E /* AppSettings.swift */,
 				3D55C9511CE7590D00DFD329 /* ErrorMessageExtension.swift */,
 			);
 			path = Soundboard;
@@ -227,6 +230,7 @@
 				3D55C9491CE753BE00DFD329 /* FileManagementViewController.swift in Sources */,
 				3DE609B61CE78804008955D0 /* FileListBaseTableViewController.swift in Sources */,
 				3D55C95A1CE7618F00DFD329 /* FileMetadataViewController.swift in Sources */,
+				3D38FD541CE9D476001BA18E /* AppSettings.swift in Sources */,
 				3DE609B81CE78B9C008955D0 /* FileSelectionViewController.swift in Sources */,
 				3DD7452B1CE74EAA001E7E9A /* AppDelegate.swift in Sources */,
 				3DF7199F1CE8B34E00104FF3 /* AboutViewController.swift in Sources */,

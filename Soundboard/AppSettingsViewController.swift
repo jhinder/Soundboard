@@ -12,11 +12,9 @@ class AppSettingsViewController: UITableViewController {
 
     @IBOutlet weak var darkThemeSwitch: UISwitch!
     
-    let defaults = NSUserDefaults()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        darkThemeSwitch.on = defaults.boolForKey(ThemeSettingsKey)
+        darkThemeSwitch.on = AppSettings.instance().darkTheme
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,16 +22,8 @@ class AppSettingsViewController: UITableViewController {
     }
 
     @IBAction func appThemeSwitcher(sender: UISwitch) {
-        let notif = ThemeNotification()
-        // Switch: on = dark, off = light
-        notif.darkTheme = sender.on
-        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangeNotification, object: notif)
+        AppSettings.instance().darkTheme = sender.on
+        NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangeNotification, object: nil)
     }
-    
-}
-
-class ThemeNotification {
-    
-    internal var darkTheme : Bool = false
     
 }
