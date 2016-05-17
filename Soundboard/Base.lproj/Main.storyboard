@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Soundboard-->
@@ -78,14 +79,22 @@
                                 <action selector="addCell:" destination="wjy-P4-4cn" id="uM6-t4-md8"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings" id="DqC-6h-Net">
-                            <connections>
-                                <segue destination="R48-RD-Sjr" kind="presentation" modalPresentationStyle="formSheet" id="kGd-AV-WS1"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="settings" id="DqC-6h-Net">
+                                <connections>
+                                    <segue destination="R48-RD-Sjr" kind="presentation" modalPresentationStyle="formSheet" id="kGd-AV-WS1"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="pds-eb-s5i">
+                                <connections>
+                                    <action selector="clearBoard:" destination="wjy-P4-4cn" id="ZQB-ap-IuM"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="Fj9-JP-2Og" id="XEJ-kx-uQb"/>
+                        <outlet property="deleteBarButtonItem" destination="pds-eb-s5i" id="qKo-j4-Nz9"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X7n-uo-kA7" userLabel="First Responder" sceneMemberID="firstResponder"/>

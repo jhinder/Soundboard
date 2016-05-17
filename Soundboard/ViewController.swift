@@ -13,6 +13,8 @@ internal let ThemeChangeNotification = "ThemeChange"
 
 class ViewController: UICollectionViewController {
 
+    @IBOutlet weak var deleteBarButtonItem: UIBarButtonItem!
+    
     /// The app delegate
     private let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -59,6 +61,30 @@ class ViewController: UICollectionViewController {
         let soundbite = NSEntityDescription.insertNewObjectForEntityForName("Soundbite", inManagedObjectContext: context) as! Soundbite
         appDelegate.saveContext()
         soundbites.append(soundbite)
+        collectionView?.reloadData()
+    }
+    
+    @IBAction func clearBoard(sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Clear soundboard?", message: "This will clear the entire soundboard.\nNo files will be removed.", preferredStyle: .ActionSheet)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Clear", style: .Destructive, handler: { (action) in
+            self.clearData()
+        }))
+        alert.popoverPresentationController?.barButtonItem = deleteBarButtonItem
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    private func clearData() {
+        // Remove from persistence
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: "Soundbite"))
+        do {
+            try context.executeRequest(deleteRequest)
+        } catch let error as NSError {
+            print("Couldn't clear board:", error)
+        }
+        
+        // Remove from memory
+        soundbites = []
         collectionView?.reloadData()
     }
     
