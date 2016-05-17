@@ -13,6 +13,7 @@ class SoundbitePlayer {
     
     private static var recordStore : [String : AVAudioPlayer] = [:]
     
+    /// Inserts an audio file into the cache.
     internal class func cacheFile(url: NSURL) {
         do {
             let player = try AVAudioPlayer(contentsOfURL: url)
@@ -22,6 +23,7 @@ class SoundbitePlayer {
         }
     }
     
+    /// Plays an audio file and inserts it to the cache if required.
     internal class func playFile(url: NSURL) {
         playFile(url, recursionDepth: 0)
     }
@@ -43,14 +45,11 @@ class SoundbitePlayer {
         }
     }
     
+    /// Stops playback of all audio files.
     internal class func stopAllPlayers() {
         for (_, player) in recordStore {
             player.stop()
         }
-    }
-    
-    internal class func emptyCache() {
-        recordStore = [:]
     }
     
 }

@@ -13,7 +13,9 @@ class ColourMixerViewController: UITableViewController {
     var blackText = true
     var modified = false
     
+    /// A callback that gets invoked when this view returns. The parameter contains the new colour.
     internal var callback : ((UIColor) -> Void)?
+    /// Set this value before displaying the view controller if you want to set the sliders to the correct values.
     internal var initialColour : UIColor?
     
     @IBOutlet weak var previewCellView: UIView!
@@ -84,6 +86,10 @@ class ColourMixerViewController: UITableViewController {
         previewCellText.textColor = blackText ? UIColor.blackColor() : UIColor.whiteColor()
     }
     
+    /**
+     * Creates a UIColor from the slider values.
+     * - Returns: An instance of UIColor that corresponds to the slider values.
+     */
     private func colourFromSliders() -> UIColor {
         return UIColor(red: CGFloat(redSlider.value/255.0), green: CGFloat(greenSlider.value/255.0), blue: CGFloat(blueSlider.value/255.0), alpha: 1.0)
     }

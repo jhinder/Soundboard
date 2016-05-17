@@ -10,6 +10,7 @@ import UIKit
 
 class FileSelectionViewController: FileListBaseTableViewController {
 
+    /// A callback that gets invoked when this view returns. The parameter contains the URL of the selected audio file. 
     internal var callback : ((NSURL) -> Void)?
     
     internal var selectedUrl : NSURL?

@@ -12,6 +12,7 @@ class SoundbiteDetailsViewController: UITableViewController, UITextFieldDelegate
 
     internal var soundbite : Soundbite?
     
+    /// A callback that gets invoked when this view returns. The parameter contains the updated soundbite.
     internal var callback : ((Soundbite) -> Void)?
     
     // UI components

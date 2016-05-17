@@ -74,6 +74,7 @@ class ViewController: UICollectionViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    /// Clears the entire soundboard.
     private func clearData() {
         // Remove from persistence
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: NSFetchRequest(entityName: "Soundbite"))
@@ -88,6 +89,7 @@ class ViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
     
+    /// Gets the ID/index of the cell that contains the button that was tapped.
     private func getCellId(button: UIButton) -> Int {
         let convertedPoint = collectionView?.convertPoint(button.center, fromView: button.superview)
         let indexPath = collectionView?.indexPathForItemAtPoint(convertedPoint!)

@@ -15,6 +15,7 @@ import UIKit
 
 class FileListBaseTableViewController: UITableViewController {
 
+    /// An array containing all URLs to audio files in the Documents folder.
     internal var theFiles : [NSURL]?
     private let permittedExtensions : [String] = ["mp3", "m4a", "mp4", "wav"]
     
