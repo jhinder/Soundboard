@@ -12,11 +12,13 @@ class AppSettings {
 
     // Preference file keys
     private let ThemeSettingsKey = "darkTheme"
+    private let ResetWhenStoppingSettingsKey = "resetUponStop"
     
     private let defaults = NSUserDefaults.standardUserDefaults()
     
     private init() {
         darkTheme = defaults.boolForKey(ThemeSettingsKey)
+        resetWhenStopping = defaults.boolForKey(ResetWhenStoppingSettingsKey)
     }
     
     // MARK: - Singleton
@@ -30,10 +32,17 @@ class AppSettings {
     
     // MARK: - Properties
     
-    /// Determines whether the app uses a dark or a light theme.
+    /// Gets or sets whether the app uses a dark or a light theme.
     internal var darkTheme : Bool {
         didSet {
             defaults.setBool(darkTheme, forKey: ThemeSettingsKey)
+        }
+    }
+    
+    /// Gets or sets if the play position should be reset when playback is stopped.
+    internal var resetWhenStopping : Bool {
+        didSet {
+            defaults.setBool(resetWhenStopping, forKey: ResetWhenStoppingSettingsKey)
         }
     }
     

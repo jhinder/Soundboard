@@ -121,7 +121,7 @@
                         <sections>
                             <tableViewSection id="CLX-ow-nry">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="6OE-Sk-lJj">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="6OE-Sk-lJj">
                                         <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6OE-Sk-lJj" id="Ec9-u0-ziw">
@@ -149,6 +149,34 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="V0e-mR-tMp">
+                                        <rect key="frame" x="0.0" y="108" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V0e-mR-tMp" id="loS-cK-sYc">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset position when stopping audio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fEr-6I-kIR">
+                                                    <rect key="frame" x="18" y="11" width="273" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lFK-ID-Ra8">
+                                                    <rect key="frame" x="533" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="resetOnStopChanged:" destination="sPU-Pa-Ohs" eventType="valueChanged" id="kNc-hV-aOC"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lFK-ID-Ra8" secondAttribute="trailing" constant="10" id="Hwa-3X-dxF"/>
+                                                <constraint firstItem="lFK-ID-Ra8" firstAttribute="centerY" secondItem="loS-cK-sYc" secondAttribute="centerY" id="REe-w8-SdY"/>
+                                                <constraint firstItem="fEr-6I-kIR" firstAttribute="centerY" secondItem="loS-cK-sYc" secondAttribute="centerY" id="eD0-43-QJ4"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="fEr-6I-kIR" secondAttribute="leading" constant="-10" id="o9T-pY-yIg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -159,6 +187,7 @@
                     </tableView>
                     <connections>
                         <outlet property="darkThemeSwitch" destination="JAZ-Mg-AAB" id="yvG-1c-TZp"/>
+                        <outlet property="resetOnStopSwitch" destination="lFK-ID-Ra8" id="Y8q-Sk-oko"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ax9-zB-8XP" userLabel="First Responder" sceneMemberID="firstResponder"/>

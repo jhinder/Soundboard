@@ -47,8 +47,12 @@ class SoundbitePlayer {
     
     /// Stops playback of all audio files.
     internal class func stopAllPlayers() {
+        let reset = AppSettings.instance().resetWhenStopping
         for (_, player) in recordStore {
             player.stop()
+            if reset {
+                player.currentTime = 0
+            }
         }
     }
     
