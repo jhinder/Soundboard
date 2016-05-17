@@ -98,7 +98,9 @@ class ViewController: UICollectionViewController {
         let index = getCellId(sender)
         let soundbite = soundbites[index]
         print("Playing soundbite \(index)/\(soundbite.name)")
-        //soundbite.play()
+        if let file = soundbite.file {
+            SoundbitePlayer.playFile(file)
+        }
     }
     
     // MARK: - Navigation
