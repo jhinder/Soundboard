@@ -74,11 +74,18 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Soundboard" id="lac-ud-0fE">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="acy-M3-fbK">
-                            <connections>
-                                <action selector="addCell:" destination="wjy-P4-4cn" id="uM6-t4-md8"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="add" id="acy-M3-fbK">
+                                <connections>
+                                    <action selector="addCell:" destination="wjy-P4-4cn" id="uM6-t4-md8"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="stop" id="qRz-aD-NoD">
+                                <connections>
+                                    <action selector="stopPlayback:" destination="wjy-P4-4cn" id="rsT-RR-IcE"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem image="settings" id="DqC-6h-Net">
                                 <connections>
@@ -547,5 +554,6 @@
     </scenes>
     <resources>
         <image name="settings" width="24" height="24"/>
+        <image name="stop" width="36" height="36"/>
     </resources>
 </document>

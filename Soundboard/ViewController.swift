@@ -105,6 +105,10 @@ class ViewController: UICollectionViewController {
         }
     }
     
+    @IBAction func stopPlayback(sender: AnyObject) {
+        SoundbitePlayer.stopAllPlayers()
+    }
+    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
