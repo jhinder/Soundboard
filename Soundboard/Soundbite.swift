@@ -7,49 +7,25 @@
 //
 
 import UIKit
-import AVFoundation
+import CoreData
 
-struct Soundbite {
+class Soundbite : NSManagedObject {
     
-    internal var file : NSURL? {
-        didSet {
-            do {
-                if let _ = file {
-                    player = try AVAudioPlayer(contentsOfURL: file!)
-                }
-            } catch let error as NSError {
-                print("Could not create a player:", error)
-            }
-        }
-    }
+    @NSManaged internal var file : NSURL?
     
-    private var player : AVAudioPlayer?
+    @NSManaged internal var name : String
     
-    internal var name : String
+    @NSManaged internal var backgroundColour : UIColor
     
-    internal var backgroundColour : UIColor
-    
-    internal var darkForeground : Bool
+    @NSManaged internal var darkForeground : Bool
     
     internal var toBeDeleted : Bool = false
     
-    init() {
-        self.file = nil
-        self.name = "Soundbite"
+    override func awakeFromInsert() {
+        file = nil
+        name = "Soundbite"
         backgroundColour = UIColor.whiteColor()
         darkForeground = true
-    }
-    
-    init(withFile file: NSURL, andName name: String, andBackground bg: UIColor, useBlackForeground useDarkFg: Bool) {
-        self.file = file
-        self.name = name
-        self.backgroundColour = bg
-        self.darkForeground = useDarkFg
-    }
-    
-    internal func play() {
-        player?.prepareToPlay()
-        player?.play()
     }
     
 }

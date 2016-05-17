@@ -7,16 +7,36 @@
 //
 
 import UIKit
+import CoreData
 
 internal let ThemeChangeNotification = "ThemeChange"
 
 class ViewController: UICollectionViewController {
 
+    /// The app delegate
+    private let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
+    /// The CoreData context
+    private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
     var soundbites : [Soundbite] = []
+
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: ThemeChangeNotification, object: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Don't register cells here, we've already set the cell identifier in the storyboard.
+        
+        // Load data
+        let fetchRequest = NSFetchRequest(entityName: "Soundbite")
+        do {
+            let resultSet = try context.executeFetchRequest(fetchRequest)
+            soundbites = resultSet as! [Soundbite]
+        } catch {
+            print("Could not fetch data:", error)
+        }
         
         setTheme()
         NSNotificationCenter.defaultCenter().addObserverForName(ThemeChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
@@ -36,7 +56,9 @@ class ViewController: UICollectionViewController {
     }
     
     @IBAction func addCell(sender: UIBarButtonItem) {
-        soundbites.append(Soundbite())
+        let soundbite = NSEntityDescription.insertNewObjectForEntityForName("Soundbite", inManagedObjectContext: context) as! Soundbite
+        appDelegate.saveContext()
+        soundbites.append(soundbite)
         collectionView?.reloadData()
     }
     
@@ -50,7 +72,7 @@ class ViewController: UICollectionViewController {
         let index = getCellId(sender)
         let soundbite = soundbites[index]
         print("Playing soundbite \(index)/\(soundbite.name)")
-        soundbite.play()
+        //soundbite.play()
     }
     
     // MARK: - Navigation
@@ -63,11 +85,16 @@ class ViewController: UICollectionViewController {
             targetViewController.callback = { (soundbite) in
                 if soundbite.toBeDeleted {
                     print("Soundbite \(cellId) should be deleted")
+                    self.context.deleteObject(soundbite)
                     self.soundbites.removeAtIndex(cellId)
                 } else {
                     print("Soundbite \(cellId) will be updated")
+                    // The context and the object stay connected (somehow);
+                    // the saveContext() below applies the changes made by
+                    // the detail view to the persistent store.
                     self.soundbites[cellId] = soundbite
                 }
+                self.appDelegate.saveContext()
                 self.collectionView?.reloadData()
             }
         }
