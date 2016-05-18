@@ -14,23 +14,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Especially useful during debugging in the Simulator.
+        let appPath = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        print("App document path:", appPath)
+        
         return true
     }
     
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         // We have received a file -> move from Documents/Inbox to Documents
         // Note that you can't send audio files from Safari to other apps.
-        let documentFolder =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        let fileManager = NSFileManager.defaultManager()
+        let documentFolder =  fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         do {
             let inbox = documentFolder.URLByAppendingPathComponent("Inbox", isDirectory: true)
             let allFiles = try NSFileManager.defaultManager().contentsOfDirectoryAtURL(inbox, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions())
             for file in allFiles {
                 let target = documentFolder.URLByAppendingPathComponent(file.lastPathComponent!)
                 print("Moving", file, "to", target)
-                try NSFileManager.defaultManager().moveItemAtURL(file, toURL: target)
+                try fileManager.moveItemAtURL(file, toURL: target)
             }
         } catch let error as NSError {
             print("Error while moving inbox:", error)
@@ -68,13 +73,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "net.dfragment.Soundboard" in the application's documents Application Support directory.
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        // The directory the application uses to store the Core Data store file.
+        self.createAppSupportDirectory()
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1]
     }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
-        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
+        // The managed object model for the application.
         let modelURL = NSBundle.mainBundle().URLForResource("Soundboard", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
@@ -111,6 +117,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
     }()
+    
+    /// Creates a "Library/Application Support" folder inside the app's container if it doesn't already exist.
+    private func createAppSupportDirectory() {
+        // By default there is no Application Support folder, so we need to create it before attempting to write to it
+        let fileManager = NSFileManager.defaultManager()
+        let urls = fileManager.URLsForDirectory(.ApplicationSupportDirectory, inDomains: .UserDomainMask) as [NSURL]
+        let firstHit = urls.first!
+        var isDir : ObjCBool = false
+        let exists = fileManager.fileExistsAtPath(firstHit.relativePath!, isDirectory: &isDir)
+        print("AppSupport Check:", isDir, exists)
+        if !(exists && isDir) {
+            do {
+                try fileManager.createDirectoryAtURL(firstHit, withIntermediateDirectories: true, attributes: [:])
+                print("AppSupport folder created.")
+            } catch {
+                print("Could not create AppSupport folder.", error)
+            }
+        } else {
+            print("AppSupport already exists.")
+        }
+    }
     
     // MARK: - Core Data Saving support
     
