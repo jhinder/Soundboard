@@ -47,7 +47,7 @@
                                             </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af9-Qr-ZYa">
-                                            <rect key="frame" x="51" y="15" width="43" height="20"/>
+                                            <rect key="frame" x="51" y="8" width="43" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                                     <constraint firstItem="Af9-Qr-ZYa" firstAttribute="centerX" secondItem="QuV-KX-Acl" secondAttribute="centerX" id="GVN-Qe-seR"/>
                                     <constraint firstItem="qmx-rN-lSv" firstAttribute="centerY" secondItem="QuV-KX-Acl" secondAttribute="centerY" id="Mlk-GA-Ewu"/>
                                     <constraint firstItem="qmx-rN-lSv" firstAttribute="centerX" secondItem="QuV-KX-Acl" secondAttribute="centerX" id="gEE-3q-rjk"/>
-                                    <constraint firstItem="qmx-rN-lSv" firstAttribute="top" secondItem="Af9-Qr-ZYa" secondAttribute="bottom" constant="7" id="hDt-ce-KPC"/>
+                                    <constraint firstItem="Af9-Qr-ZYa" firstAttribute="top" secondItem="QuV-KX-Acl" secondAttribute="topMargin" id="spN-ZW-3rT"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="nameLabel" destination="Af9-Qr-ZYa" id="Nam-Fj-zox"/>

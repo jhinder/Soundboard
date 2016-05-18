@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 internal let ThemeChangeNotification = "ThemeChange"
+internal let CellSizeChangeNotification = "CellSizeChange"
 
 class ViewController: UICollectionViewController {
 
@@ -22,9 +23,11 @@ class ViewController: UICollectionViewController {
     private let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     var soundbites : [Soundbite] = []
+    private var cellSize : CGFloat = 144.0
 
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: ThemeChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CellSizeChangeNotification, object: nil)
     }
     
     override func viewDidLoad() {
@@ -44,6 +47,10 @@ class ViewController: UICollectionViewController {
         NSNotificationCenter.defaultCenter().addObserverForName(ThemeChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
             self.setTheme()
         }
+        setCellSize()
+        NSNotificationCenter.defaultCenter().addObserverForName(CellSizeChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
+            self.setCellSize()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +62,24 @@ class ViewController: UICollectionViewController {
         self.navigationController?.navigationBar.tintColor = (dark ? UIColor.whiteColor() : nil)
         self.navigationController?.navigationBar.barStyle = (dark ? .Black : .Default)
         self.collectionView?.backgroundColor = (dark ? UIColor.darkGrayColor() : UIColor.whiteColor())
+    }
+    
+    private func setCellSize() {
+        let index = AppSettings.instance().cellSizeIndex
+        switch index {
+        case 0: // normal
+            cellSize = 144.0
+        case 1: // larger
+            cellSize = 192.0
+        default:
+            cellSize = 144.0
+        }
+        // redraw all cells:
+        collectionView?.collectionViewLayout.invalidateLayout()
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(cellSize, cellSize)
     }
     
     @IBAction func addCell(sender: UIBarButtonItem) {

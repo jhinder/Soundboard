@@ -208,6 +208,39 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="fnx-HX-IOV">
+                                        <rect key="frame" x="0.0" y="196" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fnx-HX-IOV" id="cDj-55-vcx">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" text="Soundbite size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vh9-l9-rcm">
+                                                    <rect key="frame" x="18" y="11" width="113" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="XfJ-HG-g1g">
+                                                    <rect key="frame" x="465" y="7" width="117" height="29"/>
+                                                    <segments>
+                                                        <segment title="Normal"/>
+                                                        <segment title="Larger"/>
+                                                    </segments>
+                                                    <connections>
+                                                        <action selector="cellSizeIndexChanged:" destination="sPU-Pa-Ohs" eventType="valueChanged" id="ixD-fA-uPe"/>
+                                                    </connections>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="XfJ-HG-g1g" firstAttribute="centerY" secondItem="cDj-55-vcx" secondAttribute="centerY" id="2dv-mI-p39"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="XfJ-HG-g1g" secondAttribute="trailing" constant="10" id="DDb-se-L1j"/>
+                                                <constraint firstItem="Vh9-l9-rcm" firstAttribute="centerY" secondItem="cDj-55-vcx" secondAttribute="centerY" id="KUy-Qa-obV"/>
+                                                <constraint firstItem="XfJ-HG-g1g" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vh9-l9-rcm" secondAttribute="trailing" constant="10" id="Vvl-ja-wfh"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Vh9-l9-rcm" secondAttribute="leading" constant="-10" id="uPm-HX-1ZQ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -217,6 +250,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="cellSizeIndexSelector" destination="XfJ-HG-g1g" id="hsw-Z2-byB"/>
                         <outlet property="cloudBackupSwitch" destination="2hV-Zx-7UF" id="NqL-8G-iYx"/>
                         <outlet property="darkThemeSwitch" destination="JAZ-Mg-AAB" id="yvG-1c-TZp"/>
                         <outlet property="resetOnStopSwitch" destination="lFK-ID-Ra8" id="Y8q-Sk-oko"/>

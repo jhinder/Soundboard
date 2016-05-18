@@ -13,6 +13,7 @@ class AppSettingsViewController: UITableViewController {
     @IBOutlet weak var darkThemeSwitch: UISwitch!
     @IBOutlet weak var resetOnStopSwitch: UISwitch!
     @IBOutlet weak var cloudBackupSwitch: UISwitch!
+    @IBOutlet weak var cellSizeIndexSelector: UISegmentedControl!
     
     let settings = AppSettings.instance()
     
@@ -21,6 +22,7 @@ class AppSettingsViewController: UITableViewController {
         darkThemeSwitch.on = settings.darkTheme
         resetOnStopSwitch.on = settings.resetWhenStopping
         cloudBackupSwitch.on = settings.cloudBackup
+        cellSizeIndexSelector.selectedSegmentIndex = settings.cellSizeIndex
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +48,11 @@ class AppSettingsViewController: UITableViewController {
             print("Could not set Backup flag to", isOn, "; ", error)
         }
 
+    }
+    
+    @IBAction func cellSizeIndexChanged(sender: UISegmentedControl) {
+        settings.cellSizeIndex = sender.selectedSegmentIndex
+        NSNotificationCenter.defaultCenter().postNotificationName(CellSizeChangeNotification, object: nil)
     }
     
 }

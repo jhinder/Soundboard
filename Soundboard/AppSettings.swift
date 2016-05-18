@@ -14,6 +14,7 @@ class AppSettings {
     private let ThemeSettingsKey = "darkTheme"
     private let ResetWhenStoppingSettingsKey = "resetUponStop"
     private let CloudBackupSettingsKey = "backupMusicToCloud"
+    private let CellSizeSettingsKey = "cellSizeIndex"
     
     private let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -27,6 +28,7 @@ class AppSettings {
             // some value is set
             cloudBackup = defaults.boolForKey(CloudBackupSettingsKey)
         }
+        cellSizeIndex = defaults.integerForKey(CellSizeSettingsKey)
     }
     
     // MARK: - Singleton
@@ -58,6 +60,13 @@ class AppSettings {
     internal var cloudBackup : Bool {
         didSet {
             defaults.setBool(cloudBackup, forKey: CloudBackupSettingsKey)
+        }
+    }
+    
+    /// Gets or sets the index of the cell size settings (0 = normal, 1 = larger)
+    internal var cellSizeIndex : Int {
+        didSet {
+            defaults.setInteger(cellSizeIndex, forKey: CellSizeSettingsKey)
         }
     }
     
