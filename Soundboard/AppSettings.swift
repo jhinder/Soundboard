@@ -13,12 +13,20 @@ class AppSettings {
     // Preference file keys
     private let ThemeSettingsKey = "darkTheme"
     private let ResetWhenStoppingSettingsKey = "resetUponStop"
+    private let CloudBackupSettingsKey = "backupMusicToCloud"
     
     private let defaults = NSUserDefaults.standardUserDefaults()
     
     private init() {
         darkTheme = defaults.boolForKey(ThemeSettingsKey)
         resetWhenStopping = defaults.boolForKey(ResetWhenStoppingSettingsKey)
+        if defaults.objectForKey(CloudBackupSettingsKey) == nil {
+            // not yet set -> enable backup by default
+            cloudBackup = true
+        } else {
+            // some value is set
+            cloudBackup = defaults.boolForKey(CloudBackupSettingsKey)
+        }
     }
     
     // MARK: - Singleton
@@ -43,6 +51,13 @@ class AppSettings {
     internal var resetWhenStopping : Bool {
         didSet {
             defaults.setBool(resetWhenStopping, forKey: ResetWhenStoppingSettingsKey)
+        }
+    }
+    
+    /// Gets or sets if the Documents folder (containing all music files) should be backed up to the cloud.
+    internal var cloudBackup : Bool {
+        didSet {
+            defaults.setBool(cloudBackup, forKey: CloudBackupSettingsKey)
         }
     }
     
