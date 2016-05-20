@@ -10,7 +10,7 @@ import UIKit
 
 class ColourMixerViewController: UITableViewController {
 
-    var blackText = true
+    var backgroundIndex : Int = 0
     var modified = false
     
     /// A callback that gets invoked when this view returns. The parameter contains the new colour.
@@ -63,7 +63,7 @@ class ColourMixerViewController: UITableViewController {
     }
     
     @IBAction func textColourChanged(sender: UISegmentedControl) {
-        blackText = sender.selectedSegmentIndex == 0
+        backgroundIndex = sender.selectedSegmentIndex
         updatePreview()
     }
     
@@ -75,22 +75,49 @@ class ColourMixerViewController: UITableViewController {
     func executeCallback() {
         if let _ = callback {
             if modified {
-                callback!(colourFromSliders())
+                callback!(uiColourFromSliders(colourFromSliders()))
             }
         }
     }
     
     func updatePreview() {
-        let colour = colourFromSliders()
+        let colourTuple = colourFromSliders()
+        let colour = uiColourFromSliders(colourTuple)
         previewCellView.backgroundColor = colour
-        previewCellText.textColor = blackText ? UIColor.blackColor() : UIColor.whiteColor()
+        var black : Bool
+        if backgroundIndex == 2 {
+            // Auto
+            let greyValue = luminescence(colourTuple)
+            // 0-127 = dark -> white text, 127-255 = light = black text
+            black = (greyValue > 127.5) // 255.0/2.0
+        } else {
+            // black or white
+            black = backgroundIndex == 0
+        }
+        previewCellText.textColor = black ? UIColor.blackColor() : UIColor.whiteColor()
     }
     
     /**
-     * Creates a UIColor from the slider values.
-     * - Returns: An instance of UIColor that corresponds to the slider values.
+     * Creates a UIColor from a tuple of RGB colours.
+     * - Returns: An instance of UIColor that corresponds to the RGB colours.
      */
-    private func colourFromSliders() -> UIColor {
+    private func uiColourFromSliders(colours: (Float, Float, Float)) -> UIColor {
         return UIColor(red: CGFloat(redSlider.value/255.0), green: CGFloat(greenSlider.value/255.0), blue: CGFloat(blueSlider.value/255.0), alpha: 1.0)
+    }
+    
+    /**
+     * Creates a tuple of three colours (RGB) from the sliders.
+     * The values are in the range of 0.0 to 255.0.
+     */
+    private func colourFromSliders() -> (Float, Float, Float) {
+        return (redSlider.value, greenSlider.value, blueSlider.value)
+    }
+    
+    /**
+     * Calculates the luma according to ITU-R BT.709.
+     * - Returns: The luma of the RGB colour; the value is in the 0.0 to 255.0 range.
+     */
+    private func luminescence(colours: (Float, Float, Float)) -> Float {
+        return  0.2126 * colours.0 + 0.7152 * colours.1 + 0.0722 * colours.2
     }
 }
