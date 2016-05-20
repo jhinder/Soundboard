@@ -12,6 +12,7 @@ import AVFoundation
 class SoundbitePlayer {
     
     private static var recordStore : [String : AVAudioPlayer] = [:]
+    private static var audioSession = AVAudioSession.sharedInstance()
     
     /// Inserts an audio file into the cache.
     internal class func cacheFile(url: NSURL) {
@@ -54,6 +55,46 @@ class SoundbitePlayer {
                 player.currentTime = 0
             }
         }
+    }
+    
+    /// Prepares the audio session for playback (sets category and options).
+    internal class func setUpSession() {
+        print("Preparing the session...")
+        applyFlagsToAudioSession()
+        do {
+            try audioSession.setActive(true)
+        } catch {
+            print("Could not start session:", error)
+        }
+    }
+    
+    /// Disables the audio session.
+    internal class func tearDownSession() {
+        print("Stopping the session...")
+        do {
+            try audioSession.setActive(false)
+        } catch {
+            print("Could not stop session:", error)
+        }
+    }
+    
+    private class func applyFlagsToAudioSession() {
+        let options = getSessionOptionFlags()
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, withOptions: options)
+            print("New audio options (bitmask value):", options.rawValue)
+        } catch {
+            print("Could not apply session flags, bitmask value \(options.rawValue):", error)
+        }
+    }
+    
+    private class func getSessionOptionFlags() -> AVAudioSessionCategoryOptions {
+        let settings = AppSettings.instance()
+        var flagsRaw : UInt = 0
+        if settings.allowOtherAudio {
+            flagsRaw = flagsRaw | AVAudioSessionCategoryOptions.MixWithOthers.rawValue
+        }
+        return AVAudioSessionCategoryOptions(rawValue: flagsRaw)
     }
     
 }

@@ -15,6 +15,7 @@ class AppSettings {
     private let ResetWhenStoppingSettingsKey = "resetUponStop"
     private let CloudBackupSettingsKey = "backupMusicToCloud"
     private let CellSizeSettingsKey = "cellSizeIndex"
+    private let AllowOtherAudioSettingsKey = "allowOtherAudio"
     
     private let defaults = NSUserDefaults.standardUserDefaults()
     
@@ -29,6 +30,12 @@ class AppSettings {
             cloudBackup = defaults.boolForKey(CloudBackupSettingsKey)
         }
         cellSizeIndex = defaults.integerForKey(CellSizeSettingsKey)
+        
+        if defaults.objectForKey(AllowOtherAudioSettingsKey) == nil { // same as with cloudBackup
+            allowOtherAudio = true
+        } else {
+            allowOtherAudio = defaults.boolForKey(AllowOtherAudioSettingsKey)
+        }
     }
     
     // MARK: - Singleton
@@ -67,6 +74,13 @@ class AppSettings {
     internal var cellSizeIndex : Int {
         didSet {
             defaults.setInteger(cellSizeIndex, forKey: CellSizeSettingsKey)
+        }
+    }
+    
+    /// Gets or sets if other audio should be ducked while playing a soundbite.
+    internal var allowOtherAudio : Bool {
+        didSet {
+            defaults.setBool(allowOtherAudio, forKey: AllowOtherAudioSettingsKey)
         }
     }
     

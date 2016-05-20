@@ -11,6 +11,7 @@ import CoreData
 
 internal let ThemeChangeNotification = "ThemeChange"
 internal let CellSizeChangeNotification = "CellSizeChange"
+internal let AudioOptionsChangeNotification = "AudioOptionsChange"
 
 class ViewController: UICollectionViewController {
 
@@ -42,19 +43,29 @@ class ViewController: UICollectionViewController {
         } catch {
             print("Could not fetch data:", error)
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
+        // Do all the load-time initialisation.
         setTheme()
         NSNotificationCenter.defaultCenter().addObserverForName(ThemeChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
             self.setTheme()
         }
+        
         setCellSize()
         NSNotificationCenter.defaultCenter().addObserverForName(CellSizeChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
             self.setCellSize()
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(AudioOptionsChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
+            SoundbitePlayer.setUpSession()
+        }
     }
     
     private func setTheme() {

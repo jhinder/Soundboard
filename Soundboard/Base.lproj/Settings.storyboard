@@ -47,8 +47,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Audio settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAG-yw-wq6">
-                                                    <rect key="frame" x="57" y="11" width="110" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Audio settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAG-yw-wq6">
+                                                    <rect key="frame" x="18" y="11" width="110" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -268,8 +268,37 @@
                         <sections>
                             <tableViewSection headerTitle="Audio" id="bKx-W6-ehP">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="9zb-d1-cN6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="HyD-mZ-a0t">
                                         <rect key="frame" x="0.0" y="114" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HyD-mZ-a0t" id="HlG-5C-gDD">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="700" text="Allow other audio to play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bpk-C2-MBK">
+                                                    <rect key="frame" x="18" y="11" width="188" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vTh-20-fGj">
+                                                    <rect key="frame" x="533" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="allowOtherAudioChanged:" destination="9bQ-wC-uL1" eventType="valueChanged" id="nWd-lE-lPn"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vTh-20-fGj" secondAttribute="trailing" constant="10" id="2As-H2-Ide"/>
+                                                <constraint firstItem="vTh-20-fGj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bpk-C2-MBK" secondAttribute="trailing" priority="750" constant="10" id="9rA-WX-1Qa"/>
+                                                <constraint firstItem="vTh-20-fGj" firstAttribute="centerY" secondItem="HlG-5C-gDD" secondAttribute="centerY" id="QU4-nB-Avg"/>
+                                                <constraint firstItem="Bpk-C2-MBK" firstAttribute="centerY" secondItem="HlG-5C-gDD" secondAttribute="centerY" id="Tfv-Ju-Hdi"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Bpk-C2-MBK" secondAttribute="leading" constant="-10" id="qDI-YA-VFq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="9zb-d1-cN6">
+                                        <rect key="frame" x="0.0" y="158" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9zb-d1-cN6" id="vjN-L7-BoY">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -306,6 +335,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="allowOtherAudioSwitch" destination="vTh-20-fGj" id="9xk-Cx-OmB"/>
                         <outlet property="resetOnStopSwitch" destination="38c-5r-CFJ" id="Utv-Am-HpT"/>
                     </connections>
                 </tableViewController>
