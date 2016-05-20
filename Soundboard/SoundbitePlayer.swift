@@ -37,7 +37,10 @@ class SoundbitePlayer {
         let key = url.absoluteString
         if let player = recordStore[key] {
             print("Tried to play -> cache hit.")
-            player.prepareToPlay()
+            /* Superfluous call: play() invokes prepareForPlay() if necessary,
+             * and stop() or end of playback undoes prepareForPlay().
+             * //player.prepareToPlay()
+             */
             player.play()
         } else {
             print("Tried to play -> cache miss.")
