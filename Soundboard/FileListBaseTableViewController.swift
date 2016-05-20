@@ -40,6 +40,11 @@ class FileListBaseTableViewController: UITableViewController {
             let mappedFiles = allFiles.filter({ (fileUrl) -> Bool in
                 return permittedExtensions.contains(fileUrl.pathExtension?.lowercaseString ?? "")
             })
+            // and sort the result set in alphabetical order.
+            // (The regular sorting method used by the file API differentiates by the case of the first latter.)
+            .sort({ (urlA, urlB) -> Bool in
+                urlA.lastPathComponent?.lowercaseString < urlB.lastPathComponent?.lowercaseString
+            })
             
             if mappedFiles.isEmpty {
                 showError("Could not find any music files.", title: "No music files")
