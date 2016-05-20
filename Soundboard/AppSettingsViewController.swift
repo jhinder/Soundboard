@@ -11,7 +11,6 @@ import UIKit
 class AppSettingsViewController: UITableViewController {
 
     @IBOutlet weak var darkThemeSwitch: UISwitch!
-    @IBOutlet weak var resetOnStopSwitch: UISwitch!
     @IBOutlet weak var cloudBackupSwitch: UISwitch!
     @IBOutlet weak var cellSizeIndexSelector: UISegmentedControl!
     
@@ -20,22 +19,13 @@ class AppSettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         darkThemeSwitch.on = settings.darkTheme
-        resetOnStopSwitch.on = settings.resetWhenStopping
         cloudBackupSwitch.on = settings.cloudBackup
         cellSizeIndexSelector.selectedSegmentIndex = settings.cellSizeIndex
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 
     @IBAction func appThemeSwitcher(sender: UISwitch) {
         settings.darkTheme = sender.on
         NSNotificationCenter.defaultCenter().postNotificationName(ThemeChangeNotification, object: nil)
-    }
-    
-    @IBAction func resetOnStopChanged(sender: UISwitch) {
-        settings.resetWhenStopping = sender.on
     }
     
     @IBAction func cloudBackupChanged(sender: UISwitch) {
